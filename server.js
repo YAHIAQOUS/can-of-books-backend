@@ -61,8 +61,8 @@ function booksHandler(req, res) {
         if (err) {
             console.log('did not work')
         } else {
-            console.log(userData);
-            console.log(userData[0].books);
+            // console.log(userData);
+            // console.log(userData[0].books);
             res.send(userData[0].books);
         }
     })
@@ -73,8 +73,8 @@ function booksHandler(req, res) {
 server.post('/addbook', addingBooks);
 
 function addingBooks(req, res) {
-    console.log("its working")
-    console.log(req.body);
+    // console.log("its working")
+    // console.log(req.body);
 
     const { email, newBookName, newDescription, newImg, newStatus } = req.body
 
@@ -83,14 +83,14 @@ function addingBooks(req, res) {
             res.send('not working');
             console.log('not working');
         } else {
-            console.log('before pushing', addToData)
+            // console.log('before pushing', addToData)
             addToData[0].books.push({
                 name: newBookName,
                 description: newDescription,
                 status: newStatus,
                 imgURL: newImg
             })
-            console.log('after pushing', addToData[0])
+            // console.log('after pushing', addToData[0])
             addToData[0].save()
             res.send(addToData[0])
         }
@@ -105,8 +105,8 @@ function deleteBook(req, res) {
     let email = req.query.email;
     let index = req.params.index
 
-    console.log('inside delete')
-    console.log(email, index);
+    // console.log('inside delete')
+    // console.log(email, index);
 
     userModel.find({ email: email }, (err, data) => {
         const deleteFromData = data[0].books.filter((book, idx) => {
@@ -117,10 +117,34 @@ function deleteBook(req, res) {
         data[0].books = deleteFromData
         data[0].save()
         res.send(data[0].books)
-
     })
+}
+
+server.put('/updateBook/:index', updateBook)
+
+function updateBook(req, res) {
+    console.log(req.body);
+
+    const { bookName, bookDescription, imgURL, bookStatus, email } = req.body;
+    let index = req.params.index
 
 
+
+
+    userModel.findOne({ email: email }, (err, updatedData) => {
+        // console.log(updatedData[0].books[index]);
+        // updatedData[0].books[index]=req.body;
+        // console.log(updatedData.books);
+
+        updatedData.books.splice(index, 1, {
+            name: bookName,
+            description: bookDescription,
+            status: bookStatus,
+            imgURL: imgURL
+        })
+        updatedData.save();
+        res.send(updatedData);
+    })
 }
 
 
