@@ -58,7 +58,7 @@ function seedInitialBooks() {
     })
     yahia.save();
 }
-//  seedInitialBooks();
+ seedInitialBooks();
 
 
 server.get('/books', booksHandler)
