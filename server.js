@@ -37,7 +37,7 @@ function seedInitialBooks() {
         books: [
             {
                 name: 'Green Migraine by Michael Dickman',
-                description: "Each section of this book is a color. It's a fascinating and quite successful way to rethink sensation, and in this case, pain",
+                description: "Each section of this book is a color. It's a fascinating and quite successful way to rethink sensation, and in this case",
                 status: 'On Sale',
                 imgURL: 'https://www.mydomaine.com/thmb/ePN7WiRpZqmZqZDqw_j6nJ87pTY=/1928x2396/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/91FulkQLHiL-19931046c8c94b799863e7fc62b0a90e.jpg'
             },
