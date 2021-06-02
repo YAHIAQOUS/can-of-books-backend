@@ -5,7 +5,6 @@ const cors = require('cors');
 require('dotenv').config();
 
 
-// const PORT = process.env.PORT;
 const PORT = process.env.PORT;
 
 const server = express();
@@ -16,9 +15,9 @@ server.use(cors());
 
 const mongoose = require('mongoose');
 
-// mongoose.connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB, { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect('mongodb://yahiaqous:12345@can-of-books-shard-00-00.8brwi.mongodb.net:27017,can-of-books-shard-00-01.8brwi.mongodb.net:27017,can-of-books-shard-00-02.8brwi.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-1035nr-shard-0&authSource=admin&retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://yahiaqous:12345@can-of-books-shard-00-00.8brwi.mongodb.net:27017,can-of-books-shard-00-01.8brwi.mongodb.net:27017,can-of-books-shard-00-02.8brwi.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-1035nr-shard-0&authSource=admin&retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 
